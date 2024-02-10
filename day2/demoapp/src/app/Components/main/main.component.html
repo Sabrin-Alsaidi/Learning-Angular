@@ -1,0 +1,37 @@
+<select name="category" class="form-control m-3 w-20 "  id="cat" [(ngModel)]="SelectedCategory">
+  <option *ngFor="let item of catg" [value]="item.id">{{item.name}}</option>
+</select>
+<div class="card card">
+  <h3>Selected Category is : {{SelectedCategory}}</h3>
+  <button class="btn btn-dark" (click)="ChangeCat()"> Change Category </button>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Image </th>
+      <th>Price </th>
+      <th>Quantity </th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of prodectList">
+      <th >{{item.id}}</th>
+      <td>{{item.name}}</td>
+      <td><img [src]="item.imageUrl" alt="Prodect image"></td>
+      <td>{{item.price}}</td>
+      <td>{{item.quantity}}</td>
+      <td><input #QuantityInput type="number" class="form-control" placeholder="Enter number of product you want"></td>
+      <td><button class="btn btn-warning" (click)="TotalPrice(item.price,QuantityInput.value)"> Buy </button></td>
+      
+    </tr>
+  </tbody>
+</table>
+<div>
+  <h3>
+    Total Price : {{totalPrice}}
+  </h3>
+</div>
